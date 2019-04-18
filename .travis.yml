@@ -1,0 +1,35 @@
+language: bash
+services: docker
+
+env:
+  - VERSION=7.3 VARIANT=cli
+  - VERSION=7.3 VARIANT=fpm
+  - VERSION=7.3 VARIANT=zts
+  - VERSION=7.2 VARIANT=cli
+  - VERSION=7.2 VARIANT=fpm
+  - VERSION=7.2 VARIANT=zts
+  - VERSION=7.1 VARIANT=cli
+  - VERSION=7.1 VARIANT=fpm
+  - VERSION=7.1 VARIANT=zts
+
+install:
+  - git clone https://github.com/iksaku/laravel-docker.git ~/laravel-docker
+
+before_script:
+  - env | sort
+  - wget -qO- 'https://github.com/tianon/pgp-happy-eyeballs/raw/master/hack-my-builds.sh' | bash
+  - cd "$VERSION/$VARIANT"
+  - image="php:${VERSION}-${VARIANT}"
+
+script:
+  - |
+    (
+      set -Eeuo pipefail
+      set -x
+      docker build -t "$image" .
+    )
+
+after_script:
+  - docker images
+
+# vim:set et ts=2 sw=2:
