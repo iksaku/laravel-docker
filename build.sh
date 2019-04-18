@@ -15,6 +15,7 @@ for version in "${versions[@]}"; do
             "${tag//-/\/}"
         
         if [[ "$version" == "$latestVersion" ]]; then
+            docker tag "$name:$tag" "$name:$majorVersion-$variant"
             docker tag "$name:$tag" "$name:$variant"
 
             if [[ "$variant" == "cli" ]]; then
