@@ -1,4 +1,4 @@
-# Personal Laravel Docker images
+# Personal Laravel Docker images [![Build Status](https://travis-ci.org/iksaku/laravel-docker.svg?branch=master)](https://travis-ci.org/iksaku/laravel-docker)
 
 This repository is made of public php images that I have prepared to use with either Laravel or Lumen frameworks.
 
