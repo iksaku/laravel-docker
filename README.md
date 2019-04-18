@@ -1,5 +1,4 @@
 # Personal Laravel Docker images
-===
 
 This repository is made of public php images that I have prepared to use with either Laravel or Lumen frameworks.
 
