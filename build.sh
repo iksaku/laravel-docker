@@ -18,7 +18,7 @@ for version in "${versions[@]}"; do
             docker tag "$name:$tag" "$name:$variant"
 
             if [[ "$variant" == "cli" ]]; then
-                docker tag "$name:$tag" "latest"
+                docker tag "$name:$tag" "$name:latest"
                 docker tag "$name:$tag" "$name:$majorVersion"
             fi
         fi
