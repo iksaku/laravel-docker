@@ -9,7 +9,7 @@ for version in "${versions[@]}"; do
     for variant in "${variants[@]}"; do
         tag="$version-$variant"
         echo "Generating $name:$tag docker image..."
-        docker build \
+        docker build --squash \
             -t "$name:$tag" \
             -t "$name:$tag-alpine" \
             "${tag//-/\/}"

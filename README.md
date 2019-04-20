@@ -9,6 +9,8 @@ The `update.sh` script generates a `Dockerfile` for each specified PHP version a
 
 The `build.sh` simply builds the previously generated `Dockerfiles` and tags them accordingly for later pushing.
 
+> The `build.sh` script uses the `squash` build tag, you must enable Docker Engine's experimental features in order to use it.
+
 ## How to use this images
 You can directly pull these images from [Docker Hub](https://hub.docker.com/r/iksaku/laravel-docker) and include them in your own `Dockerfile` or `docker-compose.yml`.
 

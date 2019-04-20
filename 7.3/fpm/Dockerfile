@@ -6,8 +6,8 @@
 # Base PHP image
 FROM php:7.3-fpm-alpine
 
-# Dev dependencies
-RUN apk add --no-cache --virtual .build-deps \
+# Build dependencies
+RUN apk add --no-cache --virtual build-deps \
     $PHPIZE_DEPS \
     curl-dev \
     icu-dev \
@@ -49,8 +49,8 @@ ENV PATH ./vendor/bin:/composer/vendor/bin:$PATH
 ENV COMPOSER_ALLOW_SUPERUSER 1
 RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
 
-# Delete apk build-deps/
-RUN apk del -f .build-deps
+# Delete Build dependencies
+RUN apk del -f build-deps
 
 # Set working directory
 WORKDIR /var/www
