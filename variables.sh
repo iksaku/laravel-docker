@@ -5,5 +5,5 @@ variants=( cli fpm zts )
 name="iksaku/laravel-docker"
 
 IFS=$'\n'
-latestVersion=$(echo "${versions[*]}" | sort -nr | head -n1)
-majorVersion=${latestVersion%%.*}
+latestVersion="$(echo "${versions[*]}" | sort -nr | head -n1)"
+majorVersion="${latestVersion%%.*}"
