@@ -6,15 +6,18 @@ RUN apk add --no-cache --virtual build-deps \
     $PHPIZE_DEPS \
     curl-dev \
     icu-dev \
-    libpng-dev \
     libxml2-dev \
     libzip-dev \
     postgresql-dev \
     sqlite-dev
 
-# Production dependencies
+# Persistent dependencies
 RUN apk add --no-cache \
-    curl
+    curl \
+    icu-libs \
+    libzip \
+    postgresql-libs \
+    sqlite-libs
 
 # Install PHP Extensions
 RUN pecl install xdebug
@@ -25,7 +28,6 @@ RUN docker-php-ext-configure intl
 RUN docker-php-ext-install \
     bcmath \
     curl \
-    gd \
     intl \
     json \
     mbstring \
@@ -33,7 +35,6 @@ RUN docker-php-ext-install \
     pdo_mysql \
     pdo_pgsql \
     pdo_sqlite \
-    pcntl \
     tokenizer \
     xml \
     zip
