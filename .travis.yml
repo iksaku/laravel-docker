@@ -30,6 +30,7 @@ script:
     )
 
 after_script:
+  - docker run --rm "$image" /bin/ash -c "php -v && php --ini"
   - docker images
 
 # vim:set et ts=2 sw=2:

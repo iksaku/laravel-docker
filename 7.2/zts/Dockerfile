@@ -7,7 +7,7 @@
 FROM php:7.2-zts-alpine
 
 # Build dependencies
-RUN apk add --no-cache --virtual build-deps \
+RUN apk add --no-cache --virtual .build-deps \
     $PHPIZE_DEPS \
     curl-dev \
     icu-dev \
@@ -29,7 +29,6 @@ RUN pecl install xdebug
 RUN docker-php-ext-enable xdebug
 
 RUN docker-php-ext-configure zip --with-libzip
-RUN docker-php-ext-configure intl
 RUN docker-php-ext-install \
     bcmath \
     curl \
@@ -51,7 +50,7 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
 
 # Delete Build dependencies
-RUN apk del -f build-deps
+RUN apk del -f .build-deps
 
 # Set working directory
 WORKDIR /var/www
